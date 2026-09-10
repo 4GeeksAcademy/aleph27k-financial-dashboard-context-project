@@ -5,30 +5,30 @@
 ### Backend
 
 - Python 3.13 sobre `python:3.13-slim`, definido en [backend/Dockerfile](backend/Dockerfile).
-- FastAPI para la API HTTP.
-- Uvicorn como servidor ASGI.
-- Pydantic para modelos y validación de datos.
-- `debugpy` para depuración remota en el puerto 5678.
-- Pytest, pytest-cov y httpx para pruebas, declarados en [backend/requirements.txt](backend/requirements.txt).
+- FastAPI para la API HTTP, implementada en [backend/app/main.py](backend/app/main.py) y [backend/app/routes.py](backend/app/routes.py).
+- Uvicorn como servidor ASGI, definido en [backend/Dockerfile](backend/Dockerfile).
+- Pydantic para modelos y validación de datos, usado en [backend/app/routes.py](backend/app/routes.py).
+- `debugpy` para depuración remota en el puerto 5678, definido en [backend/Dockerfile](backend/Dockerfile).
+- Pytest, pytest-cov y httpx para pruebas, declarados en [backend/requirements.txt](backend/requirements.txt) y usados en [backend/tests/test_routes.py](backend/tests/test_routes.py).
 
 ### Frontend
 
-- React 19.2 con `react-dom`.
-- TypeScript 6.
-- Vite 8 como servidor de desarrollo y bundler.
-- Tailwind CSS 4 mediante `@tailwindcss/vite`.
-- Recharts 3.8 para gráficos.
-- Lucide React para iconos.
-- Vitest 4 para pruebas.
-- ESLint 9 con soporte para TypeScript, React Hooks y React Refresh.
+- React 19.2 con `react-dom`, declarados en [frontend/package.json](frontend/package.json).
+- TypeScript 6, declarado en [frontend/package.json](frontend/package.json).
+- Vite 8 como servidor de desarrollo y bundler, declarado en [frontend/package.json](frontend/package.json) y configurado en [frontend/vite.config.ts](frontend/vite.config.ts).
+- Tailwind CSS 4 mediante `@tailwindcss/vite`, declarado en [frontend/package.json](frontend/package.json) y configurado en [frontend/vite.config.ts](frontend/vite.config.ts).
+- Recharts 3.8 para gráficos, declarado en [frontend/package.json](frontend/package.json) y usado en [frontend/src/components/dashboard/income-outcome-chart.tsx](frontend/src/components/dashboard/income-outcome-chart.tsx).
+- Lucide React para iconos, declarado en [frontend/package.json](frontend/package.json) y usado en [frontend/src/components/dashboard/dashboard-header.tsx](frontend/src/components/dashboard/dashboard-header.tsx).
+- Vitest 4 para pruebas, declarado en [frontend/package.json](frontend/package.json) y usado en [frontend/src/lib/financial-utils.test.ts](frontend/src/lib/financial-utils.test.ts).
+- ESLint 9 con soporte para TypeScript, React Hooks y React Refresh, declarado en [frontend/package.json](frontend/package.json) y configurado en [frontend/eslint.config.js](frontend/eslint.config.js).
 - Node 24 sobre `node:24-alpine`, definido en [frontend/Dockerfile](frontend/Dockerfile).
 
 ### Orquestación
 
 - Docker Compose con los servicios `frontend` y `backend`, definido en [docker-compose.yml](docker-compose.yml).
-- Frontend expuesto en el puerto 5173.
-- Backend expuesto en el puerto 8000.
-- Debugger del backend expuesto en el puerto 5678.
+- Frontend expuesto en el puerto 5173, definido en [docker-compose.yml](docker-compose.yml) y [frontend/Dockerfile](frontend/Dockerfile).
+- Backend expuesto en el puerto 8000, definido en [docker-compose.yml](docker-compose.yml) y [backend/Dockerfile](backend/Dockerfile).
+- Debugger del backend expuesto en el puerto 5678, definido en [docker-compose.yml](docker-compose.yml) y [backend/Dockerfile](backend/Dockerfile).
 
 ## Scripts y comandos de arranque
 

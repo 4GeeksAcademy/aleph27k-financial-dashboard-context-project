@@ -46,32 +46,32 @@
 ### Backend
 
 - ✅ Python 3.13 sobre `python:3.13-slim`, definido en [backend/Dockerfile](backend/Dockerfile#L1).
-- ✅ FastAPI para HTTP y validación de respuestas.
-- ✅ Uvicorn como servidor ASGI.
+- ✅ FastAPI para HTTP y validación de respuestas, en [backend/app/main.py](backend/app/main.py#L1-L8) y [backend/app/routes.py](backend/app/routes.py#L205-L363).
+- ✅ Uvicorn como servidor ASGI, definido en [backend/Dockerfile](backend/Dockerfile#L10-L14).
 - ✅ Pydantic, usado mediante `BaseModel` y los modelos de respuesta en [backend/app/routes.py](backend/app/routes.py#L16-L53).
-- ✅ `debugpy` para depuración remota en el puerto 5678.
-- ✅ Pytest, pytest-cov y httpx para pruebas, declarados en [backend/requirements.txt](backend/requirements.txt).
+- ✅ `debugpy` para depuración remota en el puerto 5678, definido en [backend/Dockerfile](backend/Dockerfile#L10-L14).
+- ✅ Pytest, pytest-cov y httpx para pruebas, declarados en [backend/requirements.txt](backend/requirements.txt#L1-L6) y usados en [backend/tests/test_routes.py](backend/tests/test_routes.py#L1-L10).
 
 ### Frontend
 
-- ✅ React 19.2 y `react-dom`.
-- ✅ TypeScript 6.
-- ✅ Vite 8 como servidor de desarrollo y bundler.
-- ✅ Tailwind CSS 4 mediante `@tailwindcss/vite`.
-- ✅ Recharts 3.8 para gráficos.
-- ✅ Lucide React para iconos.
-- ✅ Vitest 4 para pruebas.
-- ✅ ESLint 9 con reglas de TypeScript, React Hooks y React Refresh.
+- ✅ React 19.2 y `react-dom`, declarados en [frontend/package.json](frontend/package.json#L15-L16).
+- ✅ TypeScript 6, declarado en [frontend/package.json](frontend/package.json#L25-L25).
+- ✅ Vite 8 como servidor de desarrollo y bundler, declarado en [frontend/package.json](frontend/package.json#L27-L27) y configurado en [frontend/vite.config.ts](frontend/vite.config.ts#L1-L16).
+- ✅ Tailwind CSS 4 mediante `@tailwindcss/vite`, declarado en [frontend/package.json](frontend/package.json#L18-L18) y configurado en [frontend/vite.config.ts](frontend/vite.config.ts#L1-L8).
+- ✅ Recharts 3.8 para gráficos, declarado en [frontend/package.json](frontend/package.json#L21-L21) y usado en [frontend/src/components/dashboard/income-outcome-chart.tsx](frontend/src/components/dashboard/income-outcome-chart.tsx#L1-L12).
+- ✅ Lucide React para iconos, declarado en [frontend/package.json](frontend/package.json#L20-L20) y usado en [frontend/src/components/dashboard/dashboard-header.tsx](frontend/src/components/dashboard/dashboard-header.tsx#L1-L10).
+- ✅ Vitest 4 para pruebas, declarado en [frontend/package.json](frontend/package.json#L28-L28) y usado en [frontend/src/lib/financial-utils.test.ts](frontend/src/lib/financial-utils.test.ts#L1-L8).
+- ✅ ESLint 9 con reglas de TypeScript, React Hooks y React Refresh, declarado en [frontend/package.json](frontend/package.json#L26-L26) y configurado en [frontend/eslint.config.js](frontend/eslint.config.js#L1-L20).
 - ✅ Node 24 sobre `node:24-alpine`, definido en [frontend/Dockerfile](frontend/Dockerfile#L1).
 
 ### Infraestructura local
 
-- ✅ Docker Compose con dos servicios en [docker-compose.yml](docker-compose.yml).
-- ✅ La configuración usa el hostname `backend` como destino del proxy de Vite.
+- ✅ Docker Compose con dos servicios en [docker-compose.yml](docker-compose.yml#L1-L27).
+- ✅ La configuración usa el hostname `backend` como destino del proxy de Vite, en [frontend/vite.config.ts](frontend/vite.config.ts#L9-L15).
 - ✅ Volúmenes montados:
-  - ✅ `./frontend:/app`
-  - ✅ `./backend:/app`
-  - ✅ Volumen anónimo `/app/node_modules` para no sobrescribir dependencias del contenedor frontend.
+  - ✅ `./frontend:/app`, definido en [docker-compose.yml](docker-compose.yml#L15-L18).
+  - ✅ `./backend:/app`, definido en [docker-compose.yml](docker-compose.yml#L5-L8).
+  - ✅ Volumen anónimo `/app/node_modules` para no sobrescribir dependencias del contenedor frontend, definido en [docker-compose.yml](docker-compose.yml#L15-L18).
 
 ## Arquitectura y flujo de ejecución
 
